@@ -11,9 +11,9 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '16'
-          cache: 'pnpm'
-      - run: pnpm install
-      - run: pnpm start
+          cache: 'yarn'
+      - run: yarn install
+      - run: yarn start
       - id: data
         uses: juliangruber/read-file-action@v1
         with:

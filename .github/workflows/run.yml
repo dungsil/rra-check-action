@@ -1,0 +1,21 @@
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '*/5 * * * *' # 5분마다
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+          cache: 'pnpm'
+      - run: pnpm install
+      - run: pnpm start
+      - id: data
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./data.json
+      - run: echo "${{ steps.data.outputs.content }}"

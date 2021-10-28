@@ -14,8 +14,3 @@ jobs:
           cache: 'yarn'
       - run: yarn install
       - run: yarn start
-      - id: data
-        uses: juliangruber/read-file-action@v1
-        with:
-          path: ./data.json
-      - run: echo "${{ steps.data.outputs.content }}"
